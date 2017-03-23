@@ -3,7 +3,7 @@
  */
 public class TokenRing {
 
-    public int loac(int x)
+    public int loac()
     {
         return 0;
     }
