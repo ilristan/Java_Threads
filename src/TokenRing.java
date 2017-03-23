@@ -3,11 +3,5 @@
  */
 public class TokenRing {
 
-    public int loac()
-    {
-        return 0;
-    }
-
-    public int store()
 
 }
