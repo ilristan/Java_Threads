@@ -7,11 +7,10 @@ public class Main {
         ProcessorQueue queue  = new ProcessorQueue();
 
         queue.enqueue("Hello 9");
+        String currentProcessor = queue.dequeue();
+        String[] turn = currentProcessor.split(" ");
 
-        String x = queue.dequeue();
-        String[] y = x.split(" ");
-
-        System.out.println(y[1]);
+        System.out.println(turn[1]);
 
 
 
