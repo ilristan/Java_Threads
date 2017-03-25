@@ -3,7 +3,40 @@
  */
 public class DSM {
 
-    private LocalMemory localMem = new LocalMemory();
+    private BroadcastSystem system;
+    private LocalMemory localMem;
+    private BroadcastAgent ba;
 
+
+
+    DSM(BroadcastSystem system)
+    {
+        this.system = system;
+        localMem = new LocalMemory();
+        this.ba = new BroadcastAgent(system);
+
+    }
+
+    public int load(String x)
+    {
+        return localMem.load(x);
+    }
+
+    public void store(String x, int v)
+    {
+        localMem.store(x, v);
+        String message = x + " " + Integer.toString(v);
+        ba.Broadcast(message);
+    }
+
+    public LocalMemory getLocalMem()
+    {
+        return this.localMem;
+    }
+
+    public BroadcastAgent getba()
+    {
+        return this.ba;
+    }
 
 }
