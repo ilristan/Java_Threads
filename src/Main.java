@@ -1,19 +1,22 @@
-
-
 public class Main {
 
     public static void main (String[] args)
     {
-        ProcessorQueue queue  = new ProcessorQueue();
+        Processor[] processes = new Processor[10]; // creating an array to hold the processes
+        BroadcastSystem bs = new BroadcastSystem(); //creating a broadcast system
+        bs.start(); // starts the broadcast system thread
 
-        queue.enqueue("Hello 9");
-        String currentProcessor = queue.dequeue();
-        String[] turn = currentProcessor.split(" ");
-
-        System.out.println(turn[1]);
-
-
-
-        //Processor process1 = new Processor();
+        /*
+          handles:
+            - creating the processes
+            - giving the broadcast system access to these processes
+            - starting the processes
+         */
+        for (int i = 0; i < 10; i++)
+        {
+            processes[i] = new Processor(bs, i);
+            bs.setProcessor(processes[i], i);
+            processes[i].start();
+        }
     }
 }

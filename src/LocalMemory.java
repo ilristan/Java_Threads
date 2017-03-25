@@ -1,8 +1,6 @@
 import java.util.HashMap;
 
-/**
- * Created by ivan on 3/21/2017.
- */
+
 public class LocalMemory {
 
     private HashMap<String, Integer> localHash = new HashMap<>();
