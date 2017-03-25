@@ -26,6 +26,11 @@ public class BroadcastSystem extends Thread{
         // continuously listening
         while (true)
         {
+            try {
+                sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if (!queue.isEmpty())
             {
                 String tempMessage = queue.pop(); //pops the message to send to all agents
@@ -33,7 +38,8 @@ public class BroadcastSystem extends Thread{
 
                 for(int i = 0; i<10; i++)
                 {
-                    processors[i].getDsm().store(message[0], Integer.parseInt(message[1])); //tells all agents to do this store
+                    processors[i].getDsm().getLocalMem().store(message[0],Integer.parseInt(message[1]));
+                    //processors[i].getDsm().store(message[0], Integer.parseInt(message[1])); //tells all agents to do this store
                 }
             }
         }
