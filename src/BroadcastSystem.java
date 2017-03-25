@@ -8,9 +8,9 @@ import java.util.LinkedList;
  */
 public class BroadcastSystem {
 
-    Queue<String> BSQueue = new LinkedList<String>() {
-
-    }
+//    Queue<String> BSQueue = new LinkedList<String>() {
+//
+//    }
 
 
 }

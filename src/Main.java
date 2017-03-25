@@ -1,10 +1,20 @@
-/**
- * Created by ivan on 3/22/2017.
- */
+
+
 public class Main {
 
     public static void main (String[] args)
     {
-        Processor process1 = new Processor();
+        ProcessorQueue queue  = new ProcessorQueue();
+
+        queue.enqueue("Hello 9");
+
+        String x = queue.dequeue();
+        String[] y = x.split(" ");
+
+        System.out.println(y[1]);
+
+        
+
+        //Processor process1 = new Processor();
     }
 }
