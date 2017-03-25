@@ -5,10 +5,11 @@ public class Processor extends Thread{
 
     private BroadcastSystem system;
     private DSM dsm;
-
-    Processor(BroadcastSystem system)
+    private int pid;
+    Processor(BroadcastSystem system, int pid)
     {
         this.system = system;
+        this.pid = pid;
         dsm = new DSM(system);
 
     }

@@ -13,7 +13,7 @@ public class DSM {
     {
         this.system = system;
         localMem = new LocalMemory();
-        //private BroadcastAgent ba = new BroadcastAgent();
+        this.ba = new BroadcastAgent(system);
 
     }
 
@@ -26,7 +26,7 @@ public class DSM {
     {
         localMem.store(x, v);
         String message = x + " " + Integer.toString(v);
-        //BA.broadcast(message);
+        ba.Broadcast(message);
     }
 
 }

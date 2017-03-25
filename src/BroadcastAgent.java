@@ -3,6 +3,7 @@
  */
 public class BroadcastAgent {
 
+
     private BroadcastSystem system;
 
     public BroadcastAgent(BroadcastSystem system)
@@ -11,13 +12,15 @@ public class BroadcastAgent {
     }
     public void Broadcast(String message)
     {
-
+        system.enqueue(message);
     }
 
     public void receive()
     {
 
     }
+
+
 
 
 

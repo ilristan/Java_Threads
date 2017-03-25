@@ -1,23 +1,17 @@
 import java.util.LinkedList;
 
-public class BroadcastSystem {
+public class BroadcastSystem extends ProcessorQueue{
 
     private LinkedList<String> queue = new LinkedList<String>();
 
-    public void enqueue(String element) {
+    private Processor[] processors = new Processor[10];
 
-        queue.addLast(element);
+    public void setProcessor(Processor p, int i)
+    {
+        processors[i] = p;
     }
 
-    public String dequeue() {
 
-        return queue.pop();
-    }
-
-    public Boolean isEmpty() {
-
-        return !queue.isEmpty();
-    }
 
 }
 
