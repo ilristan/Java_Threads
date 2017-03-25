@@ -1,10 +1,8 @@
-
-
 public class Main {
 
     public static void main (String[] args)
     {
-        ProcessorQueue queue  = new ProcessorQueue();
+        BroadcastSystem queue  = new BroadcastSystem();
 
         queue.enqueue("Hello 9");
         String currentProcessor = queue.dequeue();
@@ -12,8 +10,5 @@ public class Main {
 
         System.out.println(turn[1]);
 
-
-
-        //Processor process1 = new Processor();
     }
 }
