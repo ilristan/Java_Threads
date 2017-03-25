@@ -1,10 +1,10 @@
 /**
  * Created by ivan on 3/21/2017.
  */
-public class Processor {
+public class Processor extends Thread{
 
     public void run()
     {
-        for ()
+        System.out.println("test");
     }
 }
