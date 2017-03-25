@@ -13,7 +13,7 @@ public class Main {
 
         System.out.println(y[1]);
 
-        
+
 
         //Processor process1 = new Processor();
     }
