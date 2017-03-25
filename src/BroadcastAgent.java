@@ -20,6 +20,10 @@ public class BroadcastAgent {
 
     }
 
+    public BroadcastSystem getSystem()
+    {
+        return this.system;
+    }
 
 
 

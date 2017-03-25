@@ -29,4 +29,14 @@ public class DSM {
         ba.Broadcast(message);
     }
 
+    public LocalMemory getLocalMem()
+    {
+        return this.localMem;
+    }
+
+    public BroadcastAgent getba()
+    {
+        return this.ba;
+    }
+
 }

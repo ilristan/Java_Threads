@@ -31,6 +31,9 @@ public class Main {
         bs.setProcessor(p8,8);
         bs.setProcessor(p9,9);
 
+        //starts the broadcast system
+        bs.start();
+
         // starting all 10 processes
         p0.start();
         p1.start();
