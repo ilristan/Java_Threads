@@ -5,6 +5,7 @@ public class LocalMemory {
 
     private HashMap<String, Integer> localHash = new HashMap<>();
 
+
     public int load(String x)
     {
         return localHash.get(x);
