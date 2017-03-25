@@ -17,6 +17,15 @@ public class Processor extends Thread{
 
     public void run()
     {
+        for(int i = 0; i <10 ; i++)
+        {
+            dsm.store("flag"+Integer.toString(i),-1);
+        }
+        for(int i = 0; i <9 ; i++)
+        {
+            dsm.store("turn"+Integer.toString(i),-1);
+        }
+
         for (int floor = 0; floor < 9; floor++) {
             dsm.store("flag"+pid,floor); //flag[processID] = floor;
             dsm.store("turn"+floor, pid);  //turn[floor] = processID;
