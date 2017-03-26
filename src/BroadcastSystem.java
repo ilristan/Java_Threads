@@ -13,7 +13,7 @@ public class BroadcastSystem extends Thread{
     // runs the broadcast system
     public void run()
     {
-        // continuously listening
+        //continuously listening
         while (true)
         {
             // sleep for 10ms to avoid popping conflicts

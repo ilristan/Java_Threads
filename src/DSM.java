@@ -1,12 +1,13 @@
 /**
  * Created by ivan on 3/21/2017.
  */
-public class DSM {
+public class DSM extends Thread{
 
     // initializes variables
     private BroadcastSystem system;
     private LocalMemory localMem;
     private BroadcastAgent ba;
+    private boolean hasToken = false;
 
 
     // constructor
@@ -14,8 +15,16 @@ public class DSM {
     {
         this.system = system; //sets the reference to the broadcast system
         localMem = new LocalMemory();  // creates a local memory
-        this.ba = new BroadcastAgent(system,localMem); // creates a broadcast agent
+        this.ba = new BroadcastAgent(system, localMem); // creates a broadcast agent
 
+    }
+
+    public void run()
+    {
+        while (true)
+        {
+
+        }
     }
 
     // loads the value from local memory
@@ -43,4 +52,10 @@ public class DSM {
     {
         return this.ba;
     }
+
+    public void setHasToken(Boolean hasToken)
+    {
+        this.hasToken = hasToken;
+    }
+
 }
