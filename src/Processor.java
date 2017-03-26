@@ -1,8 +1,3 @@
-import jdk.nashorn.internal.parser.TokenKind;
-
-/**
- * Created by ivan on 3/21/2017.
- */
 public class Processor extends Thread{
 
     // initializing variables
@@ -10,19 +5,17 @@ public class Processor extends Thread{
     private DSM dsm;
     private int pid;
     private boolean f = false;
-    private TokenRingAgent tokenRingAgent;
 
     // constructor
     Processor(BroadcastSystem system, int pid)
     {
-        this.system = system;   // provides reference to the system for passing
-        this.pid = pid; // identifies the process ID
+        this.system = system;
+        this.pid = pid;
         dsm = new DSM(system);  // creates a DSM
-        this.tokenRingAgent = new TokenRingAgent(pid,dsm);
-        tokenRingAgent.start();    // starts the token ring agent thread
+
     }
 
-    // implementing peterson's algorithm
+    // implementing peterson's alogrithm
     public void run()
     {
         // initializes the flag values to -1 to prevent null pointer errors in the for loop (2 down)
@@ -31,7 +24,7 @@ public class Processor extends Thread{
             dsm.store("flag"+Integer.toString(i),-1);
         }
 
-        // initializes turn values to -1 to prevent null pointer errors in the for loop below
+        // intializes turn values to -1 to prevent null pointer errors in the for loop below
         for(int i = 0; i <9 ; i++)
         {
             dsm.store("turn"+Integer.toString(i),-1);
@@ -82,11 +75,5 @@ public class Processor extends Thread{
     public DSM getDsm()
     {
         return this.dsm;
-    }
-
-    // getter for the token ring agent
-    public TokenRingAgent getTokenRingAgent()
-    {
-        return this.tokenRingAgent;
     }
 }
