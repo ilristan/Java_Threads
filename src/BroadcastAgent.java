@@ -20,7 +20,7 @@ public class BroadcastAgent {
         system.enqueue(message); // adds the message to the broadcast systems queue
     }
 
-    // mehtod to receive stores from the broadcast system
+    // method to receive stores from the broadcast system
     public void receive(String x, int v)
     {
         localMem.store(x, v); // stores the message from the broadcast system to its localMem
@@ -31,6 +31,7 @@ public class BroadcastAgent {
     {
         return this.system; // returns the system
     }
+
 
 
 

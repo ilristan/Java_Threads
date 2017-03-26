@@ -7,11 +7,11 @@ public class Main {
 
     public static void main (String[] args)
     {
-        int tokenRingCount = 0;
         TokenRing tokenRing = new TokenRing();  // creating a token ring
         Processor[] processes = new Processor[10]; // creating an array to hold the processes
         BroadcastSystem bs = new BroadcastSystem(); //creating a broadcast system
         bs.start(); // starts the broadcast system thread
+
 
         /*
           handles:
@@ -21,10 +21,11 @@ public class Main {
          */
         for (int i = 0; i < 10; i++)
         {
-            processes[i] = new Processor(bs, i, tokenRingCount);
+            processes[i] = new Processor(bs, i);
             bs.setProcessor(processes[i], i);
             tokenRing.setProcessors(processes[i], i);
             processes[i].start();
         }
+
     }
 }

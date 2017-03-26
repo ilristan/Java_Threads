@@ -3,9 +3,10 @@
  */
 public class TokenRingAgent extends Thread {
 
+    private boolean tokenAcquired = false;
     private TokenRing tokenRing;  // provides access to the token ring
     private DSM dsm;
-    private Token token;  // identifies what token the agent has
+    private Token token = new Token (-1);  // identifies what token the agent has
     private int tokenAgentID;  // identifies what process the agent belongs to
     private boolean active = false; // don't use yet...
     private int RingPredecessor;  // identifies where the token is coming from
@@ -16,6 +17,11 @@ public class TokenRingAgent extends Thread {
     {
         this.tokenAgentID = tokenAgentID; // process ID
         this.dsm = dsm; // we need access to the dsm methods
+        if (tokenAgentID == 0)
+        {
+            this.token = new Token(0);
+            this.tokenAcquired = true;
+        }
         setRingSuccessor(); // identifies where to pass the token to
     }
 
@@ -28,7 +34,8 @@ public class TokenRingAgent extends Thread {
     // method for sending the token to the successor
     public void SendToken(Token t)
     {
-        tokenRing.passToken(token, RingSuccessor);
+        System.out.println("in the sendtoken funcitn");
+        tokenRing.passToken(t, RingSuccessor);
     }
 
     // setter for the successor
@@ -49,22 +56,32 @@ public class TokenRingAgent extends Thread {
     public void ReceiveToken(Token token)
     {
         this.token = token;
+        tokenAcquired = true;
+
     }
 
+//    public void setStahp(Boolean stahp)
+//    {
+//        this.stahp = stahp;
+//    }
+
     public void run() {
+
         while (true)
         {
-            if (token.getMessage() >= 0)
+            if (tokenAcquired)
             {
                 dsm.setHasToken(true);
                 try {
-                    sleep(100);
+                    sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 dsm.setHasToken(false);
-                this.token = null;
+                tokenAcquired = false;
+                System.out.println("sending token");
                 SendToken(token);
+                System.out.println("Heeeellllooooooo");
             }
         }
     }

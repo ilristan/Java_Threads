@@ -4,6 +4,7 @@
 public class TokenRing {
 
     Processor[] processors = new Processor[10]; // gives access to all processes
+    //Token token = new Token(0);
 
 
     public void setProcessors(Processor p, int i)
@@ -16,5 +17,9 @@ public class TokenRing {
         processors[i].getTokenRingAgent().ReceiveToken(token);
     }
 
+//    public Token getToken()
+//    {
+//        return token;
+//    }
 
 }

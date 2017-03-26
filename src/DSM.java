@@ -1,7 +1,7 @@
 /**
  * Created by ivan on 3/21/2017.
  */
-public class DSM extends Thread{
+public class DSM{
 
     // initializes variables
     private BroadcastSystem system;
@@ -19,13 +19,6 @@ public class DSM extends Thread{
 
     }
 
-    public void run()
-    {
-        while (true)
-        {
-
-        }
-    }
 
     // loads the value from local memory
     public int load(String x)
