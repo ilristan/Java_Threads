@@ -24,10 +24,6 @@ public class DSM {
     // stores a value to local memory and broadcasts it to the broadcast system
     public void store(String x, int v)
     {
-        while (!hasToken)
-        {
-            //System.out.println("waiting for token");
-        }
         localMem.store(x, v);   // stores to local memory
         String message = x + " " + Integer.toString(v); // converts key value pair to string for passing
         ba.Broadcast(message); // adds this string to the broadcast systems queue
