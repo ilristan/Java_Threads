@@ -5,15 +5,17 @@ public class Processor extends Thread{
     private DSM dsm;
     private int pid;
     private boolean f = false;
+    private TokenRing tokenRing;
+    private TokenRingAgent tokenRingAgent;
 
     // constructor
-    Processor(BroadcastSystem system, int pid)
+    Processor(BroadcastSystem system, int pid, TokenRing tokenRing)
     {
-        //this.tokenRing = tokenRing;
+        this.tokenRing = tokenRing; // we need access to the token ring to pass to the tokenring updated
         this.system = system;
         this.pid = pid;
-        dsm = new DSM(system);  // creates a DSM
-
+        this.dsm = new DSM(system);  // creates a DSM
+        this.tokenRingAgent = new TokenRingAgent(tokenRing, dsm, pid);
 
     }
 
@@ -78,6 +80,11 @@ public class Processor extends Thread{
     public DSM getDsm()
     {
         return this.dsm;
+    }
+
+    public TokenRingAgent getTokenRingAgent()
+    {
+        return tokenRingAgent;
     }
 
 }
