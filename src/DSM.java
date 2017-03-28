@@ -4,7 +4,7 @@ public class DSM {
     private BroadcastSystem system;
     private LocalMemory localMem;
     private BroadcastAgent ba;
-
+    private boolean hasToken;
 
     // constructor
     DSM(BroadcastSystem system)
@@ -12,7 +12,7 @@ public class DSM {
         this.system = system; //sets the reference to the broadcast system
         localMem = new LocalMemory();  // creates a local memory
         this.ba = new BroadcastAgent(system,localMem); // creates a broadcast agent
-
+        this.hasToken = false;
     }
 
     // loads the value from local memory
@@ -24,6 +24,10 @@ public class DSM {
     // stores a value to local memory and broadcasts it to the broadcast system
     public void store(String x, int v)
     {
+        while (!hasToken)
+        {
+            //System.out.println("waiting for token");
+        }
         localMem.store(x, v);   // stores to local memory
         String message = x + " " + Integer.toString(v); // converts key value pair to string for passing
         ba.Broadcast(message); // adds this string to the broadcast systems queue
@@ -40,4 +44,10 @@ public class DSM {
     {
         return this.ba;
     }
+
+    public void setHasToken(boolean state)
+    {
+        this.hasToken = state;
+    }
+
 }

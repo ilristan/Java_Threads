@@ -1,6 +1,8 @@
 public class Processor extends Thread{
 
     // initializing variables
+    private TokenRing tokenRing;
+    private TokenRingAgent tokenRingAgent;
     private BroadcastSystem system;
     private DSM dsm;
     private int pid;
@@ -9,15 +11,26 @@ public class Processor extends Thread{
     // constructor
     Processor(BroadcastSystem system, int pid)
     {
+        tokenRing = new TokenRing(pid); //creating the token ring
+        //this.tokenRing = tokenRing;
         this.system = system;
         this.pid = pid;
         dsm = new DSM(system);  // creates a DSM
+        this.tokenRingAgent = new TokenRingAgent(pid, dsm, tokenRing);
+
+
 
     }
+
 
     // implementing peterson's alogrithm
     public void run()
     {
+        if (pid == 0)
+        {
+            tokenRingAgent.ReceiveToken();
+        }
+        tokenRingAgent.start();
         // initializes the flag values to -1 to prevent null pointer errors in the for loop (2 down)
         for(int i = 0; i <10 ; i++)
         {
@@ -75,5 +88,10 @@ public class Processor extends Thread{
     public DSM getDsm()
     {
         return this.dsm;
+    }
+
+    public TokenRingAgent getTokenRingAgent()
+    {
+        return tokenRingAgent;
     }
 }
