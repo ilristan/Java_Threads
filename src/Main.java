@@ -17,7 +17,7 @@ public class Main {
         {
             processes[i] = new Processor(bs, i);
             bs.setProcessor(processes[i], i);
-            //tokenRing.setProcessors(processes[i], i); // giving the token ring access to the processes
+
             processes[i].start();
         }
 
